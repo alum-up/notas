@@ -233,7 +233,7 @@ const blankCourse = name => ({
   }
 });
 
-const COURSE_NAMES = ['Organización Industrial', 'Análisis Multivariado Cuantitativo', 'Historia del Pensamiento Económico', 'Política Comparada'];
+const COURSE_NAMES = ['Política Económica', 'Econometría 1', 'Filosofía Política', 'Ciudadanía y Democratización'];
 let state = {
   active: 0,
   courses: COURSE_NAMES.map(n => blankCourse(n))
@@ -243,9 +243,9 @@ try {
   if (s && s.courses && s.courses.length === 4 && s.courses[0].sections) state = s;
 } catch(e) {}
 // aplicar los nombres nuevos una sola vez (conserva las notas ya ingresadas)
-if (state.namesV !== 2) {
-  state.courses.forEach((c, i) => { c.name = COURSE_NAMES[i]; });
-  state.namesV = 2;
+if (state.namesV !== 3) {
+  state.courses = COURSE_NAMES.map(n => blankCourse(n));
+  state.namesV = 3;
   lsSet(KEY, JSON.stringify(state));
 }
 
